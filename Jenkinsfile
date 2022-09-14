@@ -20,10 +20,11 @@ pipeline {
         }
         stage('Production'){
             steps{
-//                 timeout(5, unit:'DAYS'){
-//                     input message: 'Approve Prodution Deployment ?'
-//                 }
+                timeout(time:5, unit:'DAYS'){
+                    input message: 'Approve Prodution Deployment ?'
+                }
                 echo "Deploying at production level"
+                build job: 'Deploy_App_Production_Env'
             }
         }
     }
