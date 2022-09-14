@@ -20,9 +20,9 @@ pipeline {
         }
         stage('Production'){
             steps{
-                timeout(5, unit:'DAYS'){
-                    input message: 'Approve Prodution Deployment ?'
-                }
+//                 timeout(5, unit:'DAYS'){
+//                     input message: 'Approve Prodution Deployment ?'
+//                 }
                 echo "Deploying at production level"
             }
         }
