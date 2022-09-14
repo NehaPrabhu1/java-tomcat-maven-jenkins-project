@@ -13,13 +13,18 @@ pipeline {
             }
         }
         stage('QA Staging'){
-            echo "Deploying at staging level"
-            build 'Deploy_App_Staging_Env'
-
+            steps{
+                echo "Deploying at staging level"
+                build job: 'Deploy_App_Staging_Env'
+            } 
         }
         stage('Production'){
-            echo "Deploying at production level"
-
+            steps{
+                timeout(5, unit:'DAYS'){
+                    input message: 'Approve Prodution Deployment ?'
+                }
+                echo "Deploying at production level"
+            }
         }
     }
 }      
